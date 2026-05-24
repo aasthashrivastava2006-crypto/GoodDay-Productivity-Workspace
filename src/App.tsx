@@ -18,6 +18,7 @@ export default function App() {
     console.log("App routes rendering!");
     return (
         <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
             <Route element={<AuthLayout />}>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
@@ -34,7 +35,7 @@ export default function App() {
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/upgrade" element={<UpgradePage />} />
             </Route>
-            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
     );
 }
