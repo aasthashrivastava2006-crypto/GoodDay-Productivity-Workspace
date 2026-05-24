@@ -11,7 +11,7 @@ A productivity application designed to help users manage tasks, organize work, a
 ## Tech Stack
 - React
 - Node.js
-- JavaScript
+- JavaScript,Typescript
 - CSS
 
 ## Installation
