@@ -19,8 +19,8 @@ import SetupTeamPage from "@/pages/SetupTeamPage";
 export default function App() {
     console.log("App routes rendering!");
     return (
-<Route path="/" element={<Navigate to="/signup" replace />} />
-          <Route path="*" element={<Navigate to="/signup" replace />} />
+        <Routes>
+            <Route element={<AuthLayout />}>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
