@@ -13,6 +13,8 @@ import { UpgradePage } from "@/pages/UpgradePage";
 import { ForgotPasswordPage } from "@/pages/auth/ForgotPasswordPage";
 import { LoginPage } from "@/pages/auth/LoginPage";
 import { SignupPage } from "@/pages/auth/SignupPage";
+import { SetupTeamPage } from "@/pages/SetupTeamPage";
+
 
 export default function App() {
     console.log("App routes rendering!");

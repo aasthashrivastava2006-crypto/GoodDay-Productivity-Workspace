@@ -15,7 +15,7 @@ export function SignupPage() {
       setError("Password must contain at least 8 characters.");
       return;
     }
-    navigate("/dashboard");
+    navigate("/setup-team");
   }
 
   return (
