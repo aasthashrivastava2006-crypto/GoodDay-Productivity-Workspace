@@ -13,15 +13,14 @@ import { UpgradePage } from "@/pages/UpgradePage";
 import { ForgotPasswordPage } from "@/pages/auth/ForgotPasswordPage";
 import { LoginPage } from "@/pages/auth/LoginPage";
 import { SignupPage } from "@/pages/auth/SignupPage";
-
+import SetupTeamPage from "@/pages/SetupTeamPage";
 
 
 export default function App() {
     console.log("App routes rendering!");
     return (
-        <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
-            <Route element={<AuthLayout />}>
+<Route path="/" element={<Navigate to="/signup" replace />} />
+          <Route path="*" element={<Navigate to="/signup" replace />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
