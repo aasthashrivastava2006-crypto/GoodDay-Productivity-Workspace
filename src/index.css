@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #5b5fef;
+  --color-secondary: #7d83ff;
+  --color-success: #22c55e;
+  --color-canvas: #f8fafc;
+  --color-night: #0f172a;
+  --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+  --shadow-card: 0 18px 45px -24px rgb(15 23 42 / 0.2);
+}
+
+:root {
+  color: #0f172a;
+  background: #f8fafc;
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html.dark {
+  color: #e2e8f0;
+  background: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.panel {
+  @apply rounded-2xl border border-slate-200/70 bg-white shadow-card dark:border-slate-800 dark:bg-slate-900;
+}
+
+.muted {
+  @apply text-slate-500 dark:text-slate-400;
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, #5b5fef, #7d83ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
