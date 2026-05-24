@@ -13,7 +13,7 @@ import { UpgradePage } from "@/pages/UpgradePage";
 import { ForgotPasswordPage } from "@/pages/auth/ForgotPasswordPage";
 import { LoginPage } from "@/pages/auth/LoginPage";
 import { SignupPage } from "@/pages/auth/SignupPage";
-import { SetupTeamPage } from "@/pages/SetupTeamPage";
+
 
 
 export default function App() {
@@ -36,6 +36,7 @@ export default function App() {
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/upgrade" element={<UpgradePage />} />
+                <Route path="/setup-team" element={<SetupTeamPage />} />
             </Route>
             <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
