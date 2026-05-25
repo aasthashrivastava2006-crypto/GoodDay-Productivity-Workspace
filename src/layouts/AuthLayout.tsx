@@ -1,7 +1,9 @@
 import { Outlet } from "react-router-dom";
 import authWorkspace from "@/assets/auth-workspace.webp";
+import Footer from "@/components/Footer";
 
 export function AuthLayout() {
+  console.log("AuthLayout rendered");
   return (
     <div className="grid min-h-screen bg-canvas dark:bg-night lg:grid-cols-[1.03fr_0.97fr]">
       <section className="hidden overflow-hidden bg-primary p-10 text-white lg:flex lg:flex-col">
@@ -33,7 +35,9 @@ export function AuthLayout() {
           <div className="mb-10 flex items-center gap-3 text-xl font-bold dark:text-white lg:hidden">
             <span className="flex size-10 items-center justify-center rounded-xl bg-primary text-white">G</span>GoodDay
           </div>
+
           <Outlet />
+          <Footer />
         </div>
       </main>
     </div>

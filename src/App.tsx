@@ -6,38 +6,37 @@ import { DashboardPage } from "@/pages/DashboardPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { ProjectsPage } from "@/pages/ProjectsPage";
 import { SettingsPage } from "@/pages/SettingsPage";
+import SetupTeamPage from "@/pages/SetupTeamPage";
 import { TasksPage } from "@/pages/TasksPage";
 import { TeamPage } from "@/pages/TeamPage";
-import { WorkspacesPage } from "@/pages/WorkspacesPage";
 import { UpgradePage } from "@/pages/UpgradePage";
+import { WorkspacesPage } from "@/pages/WorkspacesPage";
 import { ForgotPasswordPage } from "@/pages/auth/ForgotPasswordPage";
 import { LoginPage } from "@/pages/auth/LoginPage";
 import { SignupPage } from "@/pages/auth/SignupPage";
-import SetupTeamPage from "@/pages/SetupTeamPage";
-
 
 export default function App() {
-    console.log("App routes rendering!");
-    return (
-        <Routes>
-            <Route element={<AuthLayout />}>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/signup" element={<SignupPage />} />
-                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-            </Route>
-            <Route element={<AppLayout />}>
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/workspaces" element={<WorkspacesPage />} />
-                <Route path="/projects" element={<ProjectsPage />} />
-                <Route path="/tasks" element={<TasksPage />} />
-                <Route path="/team" element={<TeamPage />} />
-                <Route path="/analytics" element={<AnalyticsPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/upgrade" element={<UpgradePage />} />
-                <Route path="/setup-team" element={<SetupTeamPage />} />
-            </Route>
-            <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<AuthLayout />}>
+        <Route index element={<LoginPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="signup" element={<SignupPage />} />
+        <Route path="forgot-password" element={<ForgotPasswordPage />} />
+      </Route>
+      <Route path="/setup-team" element={<SetupTeamPage />} />
+      <Route element={<AppLayout />}>
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/workspaces" element={<WorkspacesPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/tasks" element={<TasksPage />} />
+        <Route path="/team" element={<TeamPage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/upgrade" element={<UpgradePage />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/login" replace />} />
+    </Routes>
+  );
 }

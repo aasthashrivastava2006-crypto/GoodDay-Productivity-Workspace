@@ -4,11 +4,18 @@ import { Link } from "react-router-dom";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useUser } from "@/context/UserContext";
 import { notifications } from "@/data/mockData";
 import { cn } from "@/lib/utils";
 import { useAppStore } from "@/store/useAppStore";
 
+function getInitials(name: string) {
+  return name.split(" ").filter(Boolean).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
+}
+
 export function Header() {
+  const { user } = useUser();
+  const displayName = user?.name ?? "Astha Shrivastava";
   const { darkMode, toggleTheme, toggleSidebar, notificationsOpen, toggleNotifications, closeNotifications } =
     useAppStore();
   const unread = notifications.filter((notification) => notification.unread).length;
@@ -43,7 +50,7 @@ export function Header() {
                 {notifications.map((notification) => (
                   <div key={notification.id} className={cn("rounded-xl p-3 text-sm", notification.unread ? "bg-primary/5" : "bg-slate-50 dark:bg-slate-800/60")}>
                     <p className="font-medium dark:text-white">{notification.title}</p>
-                    <p className="muted mt-1 text-xs">{notification.detail} · {notification.time}</p>
+                    <p className="muted mt-1 text-xs">{notification.detail} - {notification.time}</p>
                   </div>
                 ))}
               </div>
@@ -52,8 +59,8 @@ export function Header() {
         </div>
         <DropdownMenu.Root>
           <DropdownMenu.Trigger className="ml-1 flex items-center gap-2 rounded-xl p-1.5 hover:bg-slate-100 dark:hover:bg-slate-900">
-            <Avatar initials="AS" className="size-9" />
-            <span className="hidden text-sm font-medium dark:text-white sm:block">Astha Shrivastava</span>
+            <Avatar initials={getInitials(displayName)} className="size-9" />
+            <span className="hidden text-sm font-medium dark:text-white sm:block">{displayName}</span>
             <ChevronDown className="hidden size-4 text-slate-400 sm:block" />
           </DropdownMenu.Trigger>
           <DropdownMenu.Portal>

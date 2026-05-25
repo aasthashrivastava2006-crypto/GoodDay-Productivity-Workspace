@@ -3,10 +3,12 @@ import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useUser } from "@/context/UserContext";
 import { api } from "@/services/api";
 
 export function LoginPage() {
   const navigate = useNavigate();
+  const { user, signInUser } = useUser();
   const [email, setEmail] = useState("astha@goodday.app");
   const [password, setPassword] = useState("password123");
   const [visible, setVisible] = useState(false);
@@ -21,7 +23,8 @@ export function LoginPage() {
     }
     setError("");
     setLoading(true);
-    await api.signIn(email, password);
+    const signedIn = await api.signIn(email, password);
+    signInUser(user?.email === email ? user : signedIn);
     navigate("/dashboard");
   }
 
