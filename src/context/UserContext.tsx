@@ -29,6 +29,7 @@ type UserContextType = SessionState & {
   registerUser: (user: User) => void;
   signInUser: (user: User) => void;
   completeSetup: (project: OnboardingProject, assignedMembers: AssignedMember[]) => void;
+  addAssignedMember: (member: Omit<AssignedMember, "id">) => void;
 };
 
 const STORAGE_KEY = "goodday-onboarding";
@@ -69,8 +70,18 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setSession((current) => ({ ...current, project, assignedMembers }));
   }
 
+  function addAssignedMember(member: Omit<AssignedMember, "id">) {
+    setSession((current) => ({
+      ...current,
+      assignedMembers: [
+        ...current.assignedMembers,
+        { ...member, id: `assigned-${Date.now()}` },
+      ],
+    }));
+  }
+
   return (
-    <UserContext.Provider value={{ ...session, registerUser, signInUser, completeSetup }}>
+    <UserContext.Provider value={{ ...session, registerUser, signInUser, completeSetup, addAssignedMember }}>
       {children}
     </UserContext.Provider>
   );
